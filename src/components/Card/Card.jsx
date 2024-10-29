@@ -9,6 +9,7 @@ const Card = ({onDelete }) => {
     const [text, setText] = useState('Enter Text'); 
     const [isEditing, setEditing] = useState(false);
     const [inputValue, setInputValue] = useState(text);
+    const [showColorOptions, setShowColorOptions] = useState(false); 
 
     const handleTextClick = (event) => {
         if (event.target.tagName !== 'SELECT') {
@@ -29,6 +30,7 @@ const Card = ({onDelete }) => {
 
     const handleColorChange = (selectedColor) => {
         setColor(selectedColor);
+        setShowColorOptions(false); 
     };
 
     return (
@@ -47,18 +49,23 @@ const Card = ({onDelete }) => {
                     <p>{text}</p>
                 </div>
             )}
-            <div className={Styles.colorOptions}>
-                {colors.map((colorOption) => (
-                    <div
-                        key={colorOption}
-                        className={`${Styles.colorCircle} ${Styles[colorOption]}`}
-                        onClick={() => handleColorChange(colorOption)}
-                        title={colorOption.replace('color', 'Color ')} 
-                    >
-                        <FaPaintBrush />
-                    </div>
-                ))}
-            </div>
+            <button onClick={() => setShowColorOptions(prev => !prev)}>
+                {showColorOptions ? 'Hide Colors' : 'Show Colors'}
+            </button>
+            {showColorOptions && (
+                <div className={Styles.colorOptions}>
+                    {colors.map((colorOption) => (
+                        <div
+                            key={colorOption}
+                            className={`${Styles.colorCircle} ${Styles[colorOption]}`}
+                            onClick={() => handleColorChange(colorOption)}
+                            title={colorOption.replace('color', 'Color ')} 
+                        >
+                            <FaPaintBrush />
+                        </div>
+                    ))}
+                </div>
+            )}
             <div className={Styles.deleteIcon} onClick={onDelete}>
                 <FaTrash />
             </div>
