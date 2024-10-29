@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import Card from '../Card/Card'; 
+import Card from '../Card/Card';
+import Styles from './CardContainer.module.css';
+
 
 const CardContainer = () => {
     const [cards, setCards] = useState([{ id: Date.now(), text: 'Card 1', color: 'color1' }]);
@@ -14,10 +16,10 @@ const CardContainer = () => {
     };
 
     return (
-        <div>
+        <div className={Styles.container}>
             <h1>Card Container</h1>
             <button onClick={addCard}>Add Card</button>
-            <div>
+            <div className={Styles.cardContainer}>
                 {cards.map(card => (
                     <Card key={card.id} onDelete={() => deleteCard(card.id)} />
                 ))}
