@@ -3,9 +3,9 @@ import Styles from './Card.module.css';
 import { FaPalette, FaTrash } from 'react-icons/fa';
 import ColorOptions from '../ColorOptions/ColorOptions';
 
-const Card = ({ id, text, color, onUpdate, onDelete }) => {
+const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
     const [isEditing, setEditing] = useState(false);
-    const [inputValue, setInputValue] = useState(text);
+    const [inputValue, setInputValue] = useState(originText);
     const [showColorOptions, setShowColorOptions] = useState(false);
 
     const handleTextClick = () => {
@@ -20,13 +20,13 @@ const Card = ({ id, text, color, onUpdate, onDelete }) => {
 
     const handleInterupBlur = () => {
         setEditing(false);
-        onUpdate(id, { text: inputValue, backgroundColor: color });
+        onUpdate(id, { text: inputValue, backgroundColor: origonColor });
     };
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             setEditing(false);
-            onUpdate(id, { text: inputValue, backgroundColor: color });
+            onUpdate(id, { text: inputValue, backgroundColor: origonColor });
         }
     };
 
@@ -37,7 +37,7 @@ const Card = ({ id, text, color, onUpdate, onDelete }) => {
 
 
     return (
-        <div className={`${Styles.card} ${Styles[color]}`} onClick={handleTextClick}>
+        <div className={`${Styles.card} ${Styles[origonColor]}`} onClick={handleTextClick}>
             <div className={Styles.header}>
                 <div className={Styles.deleteIcon} onClick={onDelete}>
                     <FaTrash />
@@ -63,7 +63,7 @@ const Card = ({ id, text, color, onUpdate, onDelete }) => {
             <div className={Styles.colorPalette} onClick={() => setShowColorOptions(prev => !prev)}>
                 <FaPalette />
             </div>
-            {showColorOptions &&<ColorOptions
+            {showColorOptions && <ColorOptions
                 onColorChange={handleColorChange}
             />}
         </div>
