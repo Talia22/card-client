@@ -107,7 +107,7 @@
 
 .pinIcon {
     cursor: pointer;
-    margin-left: 10px; 
+    margin-left: 10px;
 }
 
 .unpinned {
@@ -115,5 +115,5 @@
 }
 
 .pinned {
-    color: blue; 
+    color: blue;
 }

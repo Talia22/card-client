@@ -20,7 +20,7 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete, isPinned, onPin
 
     const handleInterupBlur = () => {
         setEditing(false);
-        onUpdate(id, { text: inputValue, backgroundColor: origonColor ,isPinned: isPinned });
+        onUpdate(id, { text: inputValue, backgroundColor: origonColor, isPinned: isPinned });
     };
 
     const handleKeyDown = (event) => {
@@ -31,7 +31,7 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete, isPinned, onPin
     };
 
     const handleColorChange = (selectedColor) => {
-        onUpdate(id, { text: inputValue, backgroundColor: selectedColor , isPinned: isPinned });
+        onUpdate(id, { text: inputValue, backgroundColor: selectedColor, isPinned: isPinned });
         setShowColorOptions(false);
     };
 

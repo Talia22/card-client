@@ -8,6 +8,8 @@ import { fetchCards, addCard, updateCard, deleteCard } from '../../services/Serv
 
 const CardContainer = () => {
     const [cards, setCards] = useState([]);
+    const [search, setSearch] = useState('');
+
 
     useEffect(() => {
         const loadCards = async () => {
@@ -32,6 +34,7 @@ const CardContainer = () => {
     };
 
     const handleAddCard = async () => {
+        setSearch('');
         const newCard = { text: 'Enter text', backgroundColor: 'color1', isPinned: false };
         try {
             const response = await addCard(newCard);
@@ -57,12 +60,23 @@ const CardContainer = () => {
         handleUpdateCard(id, updatedData)
     };
 
-    const sortedCards = [...cards].sort((a, b) => (b.isPinned ? 1 : 0) - (a.isPinned ? 1 : 0));
+    const filteredCards = cards.filter(card =>
+        card.text.toLowerCase().includes(search.toLowerCase())
+    );
+
+    const sortedCards = [...filteredCards].sort((a, b) => (b.isPinned ? 1 : 0) - (a.isPinned ? 1 : 0));
 
 
     return (
         <div className={Styles.container}>
             <h1>Card Container</h1>
+            <input
+                type="text"
+                placeholder="Search cards..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className={Styles.searchBar}
+            />
             <div className={Styles.cardContainer}>
                 {sortedCards.map(card => (
                     <Card key={card.id}
