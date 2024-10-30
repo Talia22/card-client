@@ -35,7 +35,7 @@ const Card = ({id, originText, origonColor, onUpdate, onDelete }) => {
         setColor(selectedColor);
         setShowColorOptions(false); 
         setEditing(false);
-        onUpdate(id, { text: inputValue, backgroundColor: color });
+        onUpdate(id, { text: inputValue, backgroundColor: selectedColor });
 
         
     };

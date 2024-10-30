@@ -35,7 +35,7 @@ const CardContainer = () => {
         const newCard = { text: 'Enter text', backgroundColor: 'color1'}; 
         try {
             const response = await addCard(newCard);
-            setCards([...cards, response.data]);
+            setCards([...cards, response]);
         } catch (error) {
             console.error('Error adding card:', error);
         }
