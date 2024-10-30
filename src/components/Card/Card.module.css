@@ -4,7 +4,14 @@
     margin: 20px auto;
     width: 300px;
     text-align: left;
-} 
+    position: relative; 
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .color1 {
     background-color: #ffcccc;
@@ -22,6 +29,10 @@
     background-color: #ffffcc;
 }
 
+.textContainer {
+    flex-grow: 1; 
+}
+
 .editableText {
     border: none;               
     background: none;         
@@ -30,7 +41,9 @@
     width: calc(100% - 20px); 
     padding: 0;                
     outline: none;             
-    cursor: text;              
+    cursor: text;  
+    resize: none; 
+    min-height: 40px;            
 }
 
 .editableText:focus {
@@ -64,7 +77,12 @@
 .deleteIcon {
     cursor: pointer;           
     margin-left: 10px;         
-    display: inline-flex;      
-    align-items: center;       
+}
+
+.colorPalette {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
 }
 

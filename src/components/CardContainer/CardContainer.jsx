@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import Card from '../Card/Card';
 import Styles from './CardContainer.module.css';
+import { FaPlus } from 'react-icons/fa'; 
+
 
 
 const CardContainer = () => {
@@ -18,11 +20,13 @@ const CardContainer = () => {
     return (
         <div className={Styles.container}>
             <h1>Card Container</h1>
-            <button onClick={addCard}>Add Card</button>
             <div className={Styles.cardContainer}>
                 {cards.map(card => (
-                    <Card key={card.id} onDelete={() => deleteCard(card.id)} />
+                    <Card key={card.id} originText={'Enter text'} origonColor={'color1'} onDelete={() => deleteCard(card.id)} />
                 ))}
+                <div className={Styles.addCardButton} onClick={addCard}>
+                    <FaPlus />
+                </div>
             </div>
         </div>
     );

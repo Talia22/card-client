@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
 import Styles from './Card.module.css';
-import { FaPaintBrush, FaTrash } from 'react-icons/fa'; 
+import { FaPaintBrush, FaTrash, FaPalette } from 'react-icons/fa'; 
 
 const colors = ['color1', 'color2', 'color3', 'color4'];
 
-const Card = ({onDelete }) => {
-    const [color, setColor] = useState('color1');
-    const [text, setText] = useState('Enter Text'); 
+const Card = ({originText, origonColor,onDelete }) => {
+    const [color, setColor] = useState(origonColor);
+    const [text, setText] = useState(originText); 
     const [isEditing, setEditing] = useState(false);
     const [inputValue, setInputValue] = useState(text);
     const [showColorOptions, setShowColorOptions] = useState(false); 
 
     const handleTextClick = (event) => {
-        if (event.target.tagName !== 'SELECT') {
+        if (!showColorOptions) {
             setEditing(true);
         }
     };
@@ -31,27 +31,35 @@ const Card = ({onDelete }) => {
     const handleColorChange = (selectedColor) => {
         setColor(selectedColor);
         setShowColorOptions(false); 
+        setEditing(false);
     };
 
     return (
         <div className={`${Styles.card} ${Styles[color]}`} onClick={handleTextClick}>
-            {isEditing ? (
-                <input
-                    type="text"
-                    className={Styles.editableText} 
-                    value={inputValue}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
-                    autoFocus
-                />
-            ) : (
-                <div>
-                    <p>{text}</p>
+            <div className={Styles.header}>
+                <div className={Styles.textContainer}>
+                    {isEditing ? (
+                        <textarea
+                            type="text"
+                            className={Styles.editableText} 
+                            value={inputValue}
+                            onChange={handleInputChange}
+                            onKeyDown={handleKeyDown}
+                            autoFocus
+                        />
+                    ) : (
+                        <div>
+                            <p>{text}</p>
+                        </div>
+                    )}
                 </div>
-            )}
-            <button onClick={() => setShowColorOptions(prev => !prev)}>
-                {showColorOptions ? 'Hide Colors' : 'Show Colors'}
-            </button>
+                <div className={Styles.deleteIcon} onClick={onDelete}>
+                    <FaTrash />
+                </div>
+            </div>
+            <div className={Styles.colorPalette} onClick={() => setShowColorOptions(prev => !prev)}>
+                <FaPalette />
+            </div>
             {showColorOptions && (
                 <div className={Styles.colorOptions}>
                     {colors.map((colorOption) => (
@@ -66,12 +74,13 @@ const Card = ({onDelete }) => {
                     ))}
                 </div>
             )}
-            <div className={Styles.deleteIcon} onClick={onDelete}>
-                <FaTrash />
-            </div>
+
         </div>
     );
 };
 
 export default Card;
+
+
+
 
