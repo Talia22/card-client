@@ -3,9 +3,7 @@ import Styles from './Card.module.css';
 import { FaPalette, FaTrash } from 'react-icons/fa';
 import ColorOptions from '../ColorOptions/ColorOptions';
 
-const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
-    const [color, setColor] = useState(origonColor);
-    const [text, setText] = useState(originText);
+const Card = ({ id, text, color, onUpdate, onDelete }) => {
     const [isEditing, setEditing] = useState(false);
     const [inputValue, setInputValue] = useState(text);
     const [showColorOptions, setShowColorOptions] = useState(false);
@@ -21,24 +19,20 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
     };
 
     const handleInterupBlur = () => {
-        setText(inputValue);
         setEditing(false);
         onUpdate(id, { text: inputValue, backgroundColor: color });
     };
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            setText(inputValue);
             setEditing(false);
             onUpdate(id, { text: inputValue, backgroundColor: color });
         }
     };
 
     const handleColorChange = (selectedColor) => {
-        setColor(selectedColor);
         onUpdate(id, { text: inputValue, backgroundColor: selectedColor });
         setShowColorOptions(false);
-        //         setEditing(false);
     };
 
 
@@ -62,17 +56,16 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
                     />
                 ) : (
                     <div>
-                        <p className={Styles.text}>{text}</p>
+                        <p className={Styles.text}>{inputValue}</p>
                     </div>
                 )}
             </div>
             <div className={Styles.colorPalette} onClick={() => setShowColorOptions(prev => !prev)}>
                 <FaPalette />
             </div>
-            <ColorOptions
+            {showColorOptions &&<ColorOptions
                 onColorChange={handleColorChange}
-                showColorOptions={showColorOptions}
-            />
+            />}
         </div>
     );
 };
