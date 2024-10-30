@@ -12,7 +12,7 @@ const Card = ({id, originText, origonColor, onUpdate, onDelete }) => {
     const [inputValue, setInputValue] = useState(text);
     const [showColorOptions, setShowColorOptions] = useState(false); 
 
-    const handleTextClick = (event) => {
+    const handleTextClick = () => {
         if (!showColorOptions) {
             setEditing(true);
         }
@@ -21,6 +21,12 @@ const Card = ({id, originText, origonColor, onUpdate, onDelete }) => {
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
     };
+
+    const handleInterupBlur = () => {
+        setText(inputValue);
+        setEditing(false);
+        onUpdate(id, { text: inputValue, backgroundColor: color })
+    }
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
@@ -51,6 +57,7 @@ const Card = ({id, originText, origonColor, onUpdate, onDelete }) => {
                             value={inputValue}
                             onChange={handleInputChange}
                             onKeyDown={handleKeyDown}
+                            onBlur={handleInterupBlur}
                             autoFocus
                         />
                     ) : (
