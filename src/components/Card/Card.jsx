@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import Styles from './Card.module.css';
 import { FaPaintBrush, FaTrash, FaPalette } from 'react-icons/fa'; 
 
+
 const colors = ['color1', 'color2', 'color3', 'color4'];
 
-const Card = ({originText, origonColor,onDelete }) => {
+const Card = ({id, originText, origonColor, onUpdate, onDelete }) => {
     const [color, setColor] = useState(origonColor);
     const [text, setText] = useState(originText); 
     const [isEditing, setEditing] = useState(false);
@@ -25,6 +26,8 @@ const Card = ({originText, origonColor,onDelete }) => {
         if (event.key === 'Enter') {
             setText(inputValue);
             setEditing(false);
+            onUpdate(id, { text: inputValue, backgroundColor: color })
+
         }
     };
 
@@ -32,6 +35,9 @@ const Card = ({originText, origonColor,onDelete }) => {
         setColor(selectedColor);
         setShowColorOptions(false); 
         setEditing(false);
+        onUpdate(id, { text: inputValue, backgroundColor: color });
+
+        
     };
 
     return (
