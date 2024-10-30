@@ -87,33 +87,6 @@
 .editableText:focus {
     outline: none;           
 } 
-.colorOptions {
-    display: flex;               
-    justify-content: center;     
-    margin-top: 10px;          
-    position: absolute; 
-    bottom: 20px; 
-    left: 50%; 
-    transform: translateX(-50%); 
-}
-
-.colorCircle {
-    width: 20px;                
-    height: 20px;               
-    border-radius: 50%;     
-    margin: 0 5px;            
-    cursor: pointer;           
-    display: flex;              
-    align-items: center;        
-    justify-content: center;     
-    border: 2px solid transparent;
-    transition: border 0.3s;    
-}
-
-.colorCircle:hover {
-    border: 2px solid #000;  
-    scale: (1.2); 
-}
 
 .deleteIcon {
     cursor: pointer;   
