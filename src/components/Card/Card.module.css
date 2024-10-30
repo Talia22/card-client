@@ -104,3 +104,16 @@
     left: 50%;
     transform: translateX(-50%);
 }
+
+.pinIcon {
+    cursor: pointer;
+    margin-left: 10px; 
+}
+
+.unpinned {
+    color: grey;
+}
+
+.pinned {
+    color: blue; 
+}

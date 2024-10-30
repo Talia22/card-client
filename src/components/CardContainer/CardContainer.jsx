@@ -32,7 +32,7 @@ const CardContainer = () => {
     };
 
     const handleAddCard = async () => {
-        const newCard = { text: 'Enter text', backgroundColor: 'color1' };
+        const newCard = { text: 'Enter text', backgroundColor: 'color1', isPinned: false };
         try {
             const response = await addCard(newCard);
             setCards([...cards, response]);
@@ -50,12 +50,30 @@ const CardContainer = () => {
         }
     };
 
+    const handlePinToggle = async (id) => {
+        const updatedCard = cards.find(card => card.id === id);
+        const updatedData = { ...updatedCard, isPinned: !updatedCard.isPinned };
+
+        handleUpdateCard(id, updatedData)
+    };
+
+    const sortedCards = [...cards].sort((a, b) => (b.isPinned ? 1 : 0) - (a.isPinned ? 1 : 0));
+
+
     return (
         <div className={Styles.container}>
             <h1>Card Container</h1>
             <div className={Styles.cardContainer}>
-                {cards.map(card => (
-                    <Card key={card.id} id={card.id} originText={card.text} origonColor={card.backgroundColor} onUpdate={handleUpdateCard} onDelete={() => handleDeleteCard(card.id)} />
+                {sortedCards.map(card => (
+                    <Card key={card.id}
+                        id={card.id}
+                        originText={card.text}
+                        origonColor={card.backgroundColor}
+                        onUpdate={handleUpdateCard}
+                        onDelete={() => handleDeleteCard(card.id)}
+                        onPinToggle={handlePinToggle}
+                        isPinned={card.isPinned}
+                    />
                 ))}
                 <div className={Styles.addCardButton} onClick={handleAddCard}>
                     <FaPlus />

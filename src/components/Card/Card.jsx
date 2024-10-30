@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import Styles from './Card.module.css';
-import { FaPalette, FaTrash } from 'react-icons/fa';
+import { FaPalette, FaTrash, FaThumbtack } from 'react-icons/fa';
 import ColorOptions from '../ColorOptions/ColorOptions';
 
-const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
+const Card = ({ id, originText, origonColor, onUpdate, onDelete, isPinned, onPinToggle }) => {
     const [isEditing, setEditing] = useState(false);
     const [inputValue, setInputValue] = useState(originText);
     const [showColorOptions, setShowColorOptions] = useState(false);
@@ -20,18 +20,18 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
 
     const handleInterupBlur = () => {
         setEditing(false);
-        onUpdate(id, { text: inputValue, backgroundColor: origonColor });
+        onUpdate(id, { text: inputValue, backgroundColor: origonColor ,isPinned: isPinned });
     };
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             setEditing(false);
-            onUpdate(id, { text: inputValue, backgroundColor: origonColor });
+            onUpdate(id, { text: inputValue, backgroundColor: origonColor, isPinned: isPinned });
         }
     };
 
     const handleColorChange = (selectedColor) => {
-        onUpdate(id, { text: inputValue, backgroundColor: selectedColor });
+        onUpdate(id, { text: inputValue, backgroundColor: selectedColor , isPinned: isPinned });
         setShowColorOptions(false);
     };
 
@@ -41,6 +41,9 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
             <div className={Styles.header}>
                 <div className={Styles.deleteIcon} onClick={onDelete}>
                     <FaTrash />
+                </div>
+                <div className={Styles.pinIcon} onClick={(e) => { e.stopPropagation(); onPinToggle(id); }}>
+                    <FaThumbtack className={isPinned ? Styles.pinned : Styles.unpinned} />
                 </div>
             </div>
             <div className={Styles.textContainer}>
