@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import Styles from './Card.module.css';
-import { FaPalette , FaTrash } from 'react-icons/fa'; 
-import ColorOptions from '../ColorOptions/ColorOptions'; 
+import { FaPalette, FaTrash } from 'react-icons/fa';
+import ColorOptions from '../ColorOptions/ColorOptions';
 
 const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
     const [color, setColor] = useState(origonColor);
-    const [text, setText] = useState(originText); 
+    const [text, setText] = useState(originText);
     const [isEditing, setEditing] = useState(false);
     const [inputValue, setInputValue] = useState(text);
-    const [showColorOptions, setShowColorOptions] = useState(false); 
+    const [showColorOptions, setShowColorOptions] = useState(false);
 
     const handleTextClick = () => {
         if (!showColorOptions) {
@@ -37,8 +37,8 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
     const handleColorChange = (selectedColor) => {
         setColor(selectedColor);
         onUpdate(id, { text: inputValue, backgroundColor: selectedColor });
-        setShowColorOptions(false); 
-//         setEditing(false);
+        setShowColorOptions(false);
+        //         setEditing(false);
     };
 
 
@@ -53,7 +53,7 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
                 {isEditing ? (
                     <textarea
                         type="text"
-                        className={Styles.editableText} 
+                        className={Styles.editableText}
                         value={inputValue}
                         onChange={handleInputChange}
                         onKeyDown={handleKeyDown}
@@ -69,9 +69,9 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete }) => {
             <div className={Styles.colorPalette} onClick={() => setShowColorOptions(prev => !prev)}>
                 <FaPalette />
             </div>
-            <ColorOptions 
-                onColorChange={handleColorChange} 
-                showColorOptions={showColorOptions} 
+            <ColorOptions
+                onColorChange={handleColorChange}
+                showColorOptions={showColorOptions}
             />
         </div>
     );

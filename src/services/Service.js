@@ -8,7 +8,7 @@ export const fetchCards = async () => {
         return response.data;
     } catch (error) {
         console.error('Error fetching cards:', error);
-        throw error; 
+        throw error;
     }
 };
 
@@ -18,7 +18,7 @@ export const addCard = async (newCard) => {
         return response.data;
     } catch (error) {
         console.error('Error adding card:', error);
-        throw error; 
+        throw error;
     }
 };
 
@@ -28,7 +28,7 @@ export const updateCard = async (id, updatedData) => {
         return response.data;
     } catch (error) {
         console.error('Error updating card:', error);
-        throw error; 
+        throw error;
     }
 };
 
@@ -38,7 +38,7 @@ export const deleteCard = async (id) => {
         return response.data;
     } catch (error) {
         console.error('Error deleting card:', error);
-        throw error; 
+        throw error;
     }
 };
 

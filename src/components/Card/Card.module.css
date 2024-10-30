@@ -5,27 +5,27 @@
     width: 300px;
     height: 300px;
     text-align: left;
-    position: relative; 
+    position: relative;
     transition: transform 0.3s, box-shadow 0.3s;
     overflow: hidden;
 }
 
 .card:hover {
-    transform: translateY(-5px); 
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); 
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .header {
     display: flex;
-    justify-content:left;
+    justify-content: left;
 }
 
 .color1 {
-    background-color: #ffcccc; 
+    background-color: #ffcccc;
 }
 
 .color2 {
-    background-color: #ccffcc; 
+    background-color: #ccffcc;
 }
 
 .color3 {
@@ -33,23 +33,23 @@
 }
 
 .color4 {
-    background-color: #ffffcc; 
+    background-color: #ffffcc;
 }
 
 .color5 {
-    background-color: #ffb3e6; 
+    background-color: #ffb3e6;
 }
 
 .color6 {
-    background-color: #b3ffff; 
+    background-color: #b3ffff;
 }
 
 .color7 {
-    background-color: #ffd1b3; 
+    background-color: #ffd1b3;
 }
 
 .color8 {
-    background-color: #d1b3ff; 
+    background-color: #d1b3ff;
 }
 
 .textContainer {
@@ -58,38 +58,38 @@
 }
 
 .text {
-    max-height: 200px; 
+    max-height: 200px;
     overflow-y: hidden;
     padding: 15px, 20px;
     text-align: center;
     width: 100%;
 }
 
-.text:hover{
+.text:hover {
     overflow-y: auto;
 }
 
 .editableText {
-    flex-grow: 1; 
-    border: none;               
-    background: none;         
-    font: inherit;            
-    color: inherit;         
-    width: calc(100% - 20px); 
-    padding: 0;                
-    outline: none;             
-    cursor: text;  
-    resize: none; 
-    min-height: 200px;  
-    width: 250px;     
+    flex-grow: 1;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    width: calc(100% - 20px);
+    padding: 0;
+    outline: none;
+    cursor: text;
+    resize: none;
+    min-height: 200px;
+    width: 250px;
 }
 
 .editableText:focus {
-    outline: none;           
-} 
+    outline: none;
+}
 
 .deleteIcon {
-    cursor: pointer;   
+    cursor: pointer;
     position: absolute;
     right: 10px;
 }
@@ -99,9 +99,8 @@
     display: flex;
     justify-content: center;
     margin-top: 10px;
-    position: absolute; 
-    bottom: 50px; 
-    left: 50%; 
-    transform: translateX(-50%); 
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
 }
-
