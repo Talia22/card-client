@@ -54,10 +54,11 @@
 
 .textContainer {
     word-break: break-word;
+    padding: 10px;
 }
 
 .text {
-    max-height: 150px; 
+    max-height: 200px; 
     overflow-y: hidden;
     padding: 15px, 20px;
     text-align: center;
