@@ -3,7 +3,7 @@ import Styles from './Card.module.css';
 import { FaPaintBrush, FaTrash, FaPalette } from 'react-icons/fa'; 
 
 
-const colors = ['color1', 'color2', 'color3', 'color4'];
+const colors = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6' , 'color7' , 'color8'];
 
 const Card = ({id, originText, origonColor, onUpdate, onDelete }) => {
     const [color, setColor] = useState(origonColor);
@@ -49,26 +49,26 @@ const Card = ({id, originText, origonColor, onUpdate, onDelete }) => {
     return (
         <div className={`${Styles.card} ${Styles[color]}`} onClick={handleTextClick}>
             <div className={Styles.header}>
-                <div className={Styles.textContainer}>
-                    {isEditing ? (
-                        <textarea
-                            type="text"
-                            className={Styles.editableText} 
-                            value={inputValue}
-                            onChange={handleInputChange}
-                            onKeyDown={handleKeyDown}
-                            onBlur={handleInterupBlur}
-                            autoFocus
-                        />
-                    ) : (
-                        <div>
-                            <p>{text}</p>
-                        </div>
-                    )}
-                </div>
                 <div className={Styles.deleteIcon} onClick={onDelete}>
                     <FaTrash />
                 </div>
+            </div>
+            <div className={Styles.textContainer}>
+                {isEditing ? (
+                    <textarea
+                        type="text"
+                        className={Styles.editableText} 
+                        value={inputValue}
+                        onChange={handleInputChange}
+                        onKeyDown={handleKeyDown}
+                        onBlur={handleInterupBlur}
+                        autoFocus
+                    />
+                ) : (
+                    <div>
+                        <p className={Styles.text}>{text}</p>
+                    </div>
+                )}
             </div>
             <div className={Styles.colorPalette} onClick={() => setShowColorOptions(prev => !prev)}>
                 <FaPalette />
