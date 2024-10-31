@@ -1,26 +1,26 @@
 import React from 'react';
 import { FaPaintBrush } from 'react-icons/fa';
 import Styles from './ColorOptions.module.css';
-
-const colors = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8'];
+import colors from '../../lib/colors'
 
 const ColorOptions = ({ onColorChange }) => {
     return (
         (
             <div className={Styles.colorOptions}>
-                {colors.map((colorOption) => (
-                    <div
-                        key={colorOption}
-                        className={`${Styles.colorCircle} ${Styles[colorOption]}`}
-                        onClick={() => {
-                            onColorChange(colorOption);
-                        }}
-                        title={colorOption.replace('color', 'Color ')}
-                    >
-                        <FaPaintBrush />
-                    </div>
-                ))}
-            </div>
+            {Object.keys(colors).map((colorKey) => (
+                <div
+                    key={colorKey}
+                    className={`${Styles.colorCircle} ${Styles[colorKey]}`}
+                    onClick={() => {
+                        onColorChange(colorKey);
+                    }}
+                    title={colorKey.replace('color', 'Color ')}
+                    style={{ backgroundColor: colors[colorKey] }} 
+                >
+                    <FaPaintBrush />
+                </div>
+            ))}
+        </div>
         )
     );
 };

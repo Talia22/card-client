@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Styles from './Card.module.css';
 import { FaPalette, FaTrash, FaThumbtack } from 'react-icons/fa';
 import ColorOptions from '../ColorOptions/ColorOptions';
+import colors from '../../lib/colors'
+
 
 const Card = ({ id, originText, origonColor, onUpdate, onDelete, isPinned, onPinToggle }) => {
     const [isEditing, setEditing] = useState(false);
@@ -37,7 +39,7 @@ const Card = ({ id, originText, origonColor, onUpdate, onDelete, isPinned, onPin
 
 
     return (
-        <div className={`${Styles.card} ${Styles[origonColor]}`} onClick={handleTextClick}>
+        <div className={Styles.card} style={{ backgroundColor: colors[origonColor] }} onClick={handleTextClick}>
             <div className={Styles.header}>
                 <div className={Styles.deleteIcon} onClick={onDelete}>
                     <FaTrash />

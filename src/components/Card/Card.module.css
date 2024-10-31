@@ -20,38 +20,6 @@
     justify-content: left;
 }
 
-.color1 {
-    background-color: #ffcccc;
-}
-
-.color2 {
-    background-color: #ccffcc;
-}
-
-.color3 {
-    background-color: #ccccff;
-}
-
-.color4 {
-    background-color: #ffffcc;
-}
-
-.color5 {
-    background-color: #ffb3e6;
-}
-
-.color6 {
-    background-color: #b3ffff;
-}
-
-.color7 {
-    background-color: #ffd1b3;
-}
-
-.color8 {
-    background-color: #d1b3ff;
-}
-
 .textContainer {
     word-break: break-word;
     padding: 10px;
