@@ -21,14 +21,14 @@ This is the client-side application for the Card Management project, built using
 ## Installation
 
 1. **Clone the repository:**
-    git clone <https://github.com/Talia22/card-client>
+    - git clone <https://github.com/Talia22/card-client>
 
 
 2. **Install dependencys:**
-    cd card-client
-    npm install
+    - cd card-client
+    - npm install
 
 3. **Usage:**
-    Start the server: https://github.com/Talia22/card-server
-    npm start
-    The application will be running on http://localhost:3000.
+    - Start the server: https://github.com/Talia22/card-server
+    - npm start
+    - The application will be running on http://localhost:3000.
