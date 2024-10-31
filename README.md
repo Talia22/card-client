@@ -25,7 +25,7 @@ This is the client-side application for the Card Management project, built using
 
 
 2. **Install dependencys:**
-    cd <card-client>
+    cd card-client
     npm install
 
 3. **Usage:**
